@@ -4,7 +4,7 @@ import {GoogleMap, useJsApiLoader, Marker, HeatmapLayer } from '@react-google-ma
 
 const mapsStyle ={
   width:"100vw",
-  height:"90vh"
+  height:"100vh"
 }
 
 export default (props) => {
@@ -35,16 +35,17 @@ export default (props) => {
   
     return (
       <>
-      <p>last: lat: {props.coords.lat} lng: {props.coords.lng}</p>
-      {props.children}
+     
+      
     <GoogleMap
     mapContainerStyle={mapsStyle}
     center={props.coords}
     zoom={5}
     onClick = { e => {props.updateCoords(e.latLng.lat(),e.latLng.lng())} }
+    mapTypeControl ='false'
     
   >
-    {poiMarkers}
+    {props.children}
     <Marker position={props.coords}></Marker>
     
    </GoogleMap>
