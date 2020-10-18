@@ -58,7 +58,7 @@ export default () =>{
      <FontAwesomeIcon icon={faMapPin} className='mr-2' style={{fontSize:'1.3em'}}/>
      <strong>Flipped Travel</strong>
      </Logo>
-     <footer style={{color:'white'}}>A Dubhacks 2020 Project by Hao, Ryan, Chi, Shoaib, and Gary &lt;3 </footer>
+     <footer style={{color:'white'}}>A DubHacks 2020 Project by Hao, Ryan, Chi, Shoaib, and Gary &lt;3 </footer>
     <OverlayTrigger placement="left" delay={{show: 250, hide: 400}} overlay={ExploreInfo}>
       <StyledButton variant="light" href="/explore" >
         Explore
