@@ -4,7 +4,6 @@ import ExploreView from './ExploreView';
 import SubmitView from './SubmitView';
 import Home from './Home'
 
-
 function App() {
   return (
    <BrowserRouter>
