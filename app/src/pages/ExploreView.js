@@ -135,7 +135,7 @@ export default (props) => {
         options = {{
           opacity: 0,
           icon: {
-            scale: 20
+            scale: 50
         }}}
         onClick={e=>{
           setLastPOI(poi)
