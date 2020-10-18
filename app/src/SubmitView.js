@@ -26,6 +26,23 @@ export default()=>{
 
   }
 
+  const addNote = (title, type, lat, lng, data) => {
+    fetch("/notes", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: title,
+        type: type,
+        lat: lat,
+        lng: lng,
+        data: data
+      })
+    });
+  };
+
   return(
     <>
     
