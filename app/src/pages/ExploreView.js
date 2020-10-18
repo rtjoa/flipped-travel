@@ -11,6 +11,7 @@ const POICard = styled(Card)`
   height:calc(100vh - 60px - 12em);
   width: 25vw;
   z-index:999;
+  overflow:hidden;
   border-radius: 10px;
   margin:6em 0.69em;
 }
@@ -47,6 +48,7 @@ export default (props) => {
         }
       )
   }
+
 
   const { isLoaded, loadError } =  useJsApiLoader({
     googleMapsApiKey: "AIzaSyAFySSUITqXTjbzR4CaHBMnMeYaaFfYbEQ",
