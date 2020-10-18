@@ -25,8 +25,8 @@ export default (props) => {
   const [lastCoords, setLastCoords] = useState({lat:47.6305, lng:-122.3373})
   const [lastPOI, setLastPOI] = useState({});
 
- const  fetchPOI = () =>  {
-    fetch("/notes")
+  const  fetchPOI = async () =>  {
+    await fetch("/notes")
       .then(res => res.json())
       .then(
         (result) => {
@@ -69,15 +69,15 @@ export default (props) => {
 
   
   const renderMap = () => {
-  
+    fetchPOI();
     
   
     
   
     return (
       <>
-      <Button onClick={()=>fetchPOI()}>Fetch</Button>
-      <p>last: lat: {lastCoords.lat} lng: {lastCoords.lng} </p>
+      
+      <p>last: lat: {lastCoords.lat} lng: {lastCoords.lng} loaded:{pois.length}</p>
       {renderPOI()}
     <GoogleMap
     mapContainerStyle={mapsStyle}
