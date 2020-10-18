@@ -25,18 +25,19 @@ export default (props) => {
   const [lastCoords, setLastCoords] = useState({lat:47.6305, lng:-122.3373})
   const [lastPOI, setLastPOI] = useState({});
 
- const fetchPOI = () =>{
+ const  fetchPOI = () =>  {
     fetch("/notes")
       .then(res => res.json())
       .then(
         (result) => {
           console.log("fetched!");
-          console.log(result);
+          setPOIs(result);
+          console.log(pois)
         },
         (error) => {
           console.log(error)
         }
-      )
+      ).then(console.log(pois))
   }
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -51,11 +52,12 @@ export default (props) => {
     }else if (lastPOI.type =="text"){
       POIData=<p>{lastPOI.data}</p>
     }
+
     return (
       <POICard>
         
         <Card.Title>
-          {lastPOI.name}
+          {lastPOI.title}
         </Card.Title>
         <hr/>
         {POIData}
@@ -75,7 +77,7 @@ export default (props) => {
     return (
       <>
       <Button onClick={()=>fetchPOI()}>Fetch</Button>
-      <p>last: lat: {lastCoords.lat} lng: {lastCoords.lng} pois:{pois.toString()}</p>
+      <p>last: lat: {lastCoords.lat} lng: {lastCoords.lng} </p>
       {renderPOI()}
     <GoogleMap
     mapContainerStyle={mapsStyle}
@@ -85,11 +87,11 @@ export default (props) => {
     
   >
     
-    {/* {pois.map(poi =>{
-        return <Marker position = {{lat:poi.lat,lng:poi.lng}} onClick={()=>setLastPOI(poi)} key={poi.name +poi.lat}/> 
+    {pois.map((poi,i) =>{
+        return <Marker position = {{lat:poi.lat,lng:poi.lng}} onClick={()=>setLastPOI(poi)} key={i}/> 
       }
     )
-    } */}
+    }
     
     
    </GoogleMap>
