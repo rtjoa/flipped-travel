@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,useRef} from 'react';
 import {GoogleMap, useJsApiLoader, Marker, HeatmapLayer } from '@react-google-maps/api';
 import  {Card, Button} from 'react-bootstrap';
 import styled from 'styled-components';
@@ -33,6 +33,8 @@ export default (props) => {
   const [pois, setPOIs] = useState([]);
   const [lastCoords, setLastCoords] = useState({lat:47.6305, lng:-122.3373})
   const [lastPOI, setLastPOI] = useState({});
+  const [center,setCenter] = useState({lat:47.6305, lng:-122.3373})
+  const refContainer = useRef(null);
   useEffect(()=>fetchPOI(),[]);
 
   const  fetchPOI = async () =>  {
@@ -120,8 +122,9 @@ export default (props) => {
       
     <GoogleMap
     mapContainerStyle={mapsStyle}
-    center={{lat:	47.6456, lng:-122.3344}}
+    center={center}
     zoom={12}
+    ref={refContainer}
     
   >
     {renderHeatMap()}
@@ -137,6 +140,7 @@ export default (props) => {
         onClick={e=>{
           setLastPOI(poi)
           setLastCoords({lat:e.latLng.lat(),lng:e.latLng.lng()})
+          setCenter(refContainer.current.props.center)
         }}
         key={i}
         /> )
