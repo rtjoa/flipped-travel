@@ -21,7 +21,7 @@ export default()=>{
      
       <SubmitForm coords = {coords}/>
 
-      <MapsComponent updateCoords={updateCoords} coords={coords} />
+      <MapsComponent setCoords={setCoords} coords={coords} />
       
     </>
 

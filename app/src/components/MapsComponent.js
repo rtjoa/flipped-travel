@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import {GoogleMap, useJsApiLoader, Marker, HeatmapLayer } from '@react-google-maps/api';
 
 
@@ -8,16 +8,19 @@ const mapsStyle ={
 
 }
 
+
 export default (props) => {
+  const [center,setCenter] = useState(props.coords)
+  const refContainer = useRef(null);
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyAFySSUITqXTjbzR4CaHBMnMeYaaFfYbEQ"
   })
 
-
+ 
   
 
   const renderMap = () => {
-    
+ 
     
   
     return (
@@ -25,10 +28,14 @@ export default (props) => {
      
       
     <GoogleMap
+    ref={refContainer}
     mapContainerStyle={mapsStyle}
-    center={{lat:	47.6456,lng:-122.3344}}
+    center={center}
     zoom={5}
-    onClick = { e => {props.updateCoords(e.latLng.lat(),e.latLng.lng())} }
+    onClick = { e => {
+      props.setCoords({lat:e.latLng.lat(),lng:e.latLng.lng()})
+     setCenter(refContainer.current.props.center)
+    } }
     mapTypeControl ='false'
     
   >

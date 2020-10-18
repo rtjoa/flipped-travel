@@ -10,7 +10,6 @@ const POICard = styled(Card)`
   font-size:1.1rem;
   height:calc(100vh - 60px - 12em);
   width: 25vw;
-  overflow-y:scroll;
   z-index:999;
   border-radius: 10px;
   margin:6em 0.69em;
