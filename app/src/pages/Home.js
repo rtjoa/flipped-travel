@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Tooltip, OverlayTrigger} from 'react-bootstrap'
-import Paragraph from './components/Paragraph.js'
-import Buttons from './components/Buttons.js'
+import Paragraph from '../components/Paragraph.js'
+import Buttons from '../components/Buttons.js'
 
 export default () =>{
 

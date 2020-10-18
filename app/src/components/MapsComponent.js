@@ -3,8 +3,9 @@ import {GoogleMap, useJsApiLoader, Marker, HeatmapLayer } from '@react-google-ma
 
 
 const mapsStyle ={
-  width:"100vw",
-  height:"100vh"
+  width:"100%",
+  height:'calc(100vh - 60px)',
+
 }
 
 export default (props) => {

@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
-import MapsComponent from './components/MapsComponent';
-import SubmitForm from './components/SubmitForm'
-
+import MapsComponent from '../components/MapsComponent';
+import SubmitForm from '../components/SubmitForm'
+import Header from '../components/Header.js'
 
 
 
@@ -16,11 +16,10 @@ export default()=>{
 
   return(
     <>
+      <Header/>
       <SubmitForm coords = {coords}/>
-      <MapsComponent updateCoords={updateCoords} coords={coords} >
+      <MapsComponent updateCoords={updateCoords} coords={coords} />
       
-
-    </MapsComponent>
     </>
 
 

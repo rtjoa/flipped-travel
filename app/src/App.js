@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import ExploreView from './ExploreView';
-import SubmitView from './SubmitView';
-import Home from './Home'
+import ExploreView from './pages/ExploreView';
+import SubmitView from './pages/SubmitView';
+import Home from './pages/Home'
 
 function App() {
   return (
