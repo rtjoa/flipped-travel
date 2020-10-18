@@ -50,7 +50,8 @@ export default (props) => {
   }
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyAFySSUITqXTjbzR4CaHBMnMeYaaFfYbEQ"
+    googleMapsApiKey: "AIzaSyAFySSUITqXTjbzR4CaHBMnMeYaaFfYbEQ",
+    libraries: ["visualization"]
   })
 
   const renderPOI = () => {
@@ -96,13 +97,21 @@ export default (props) => {
 
   }
 
-  const handleMarkerOnClick = (e, poi) =>{}
+  const renderHeatMap = () =>{
+   
+    return (
+    <HeatmapLayer 
+    data= {pois.map(poi=> new window.google.maps.LatLng(poi.lat, poi.lng))} 
+    options={{
+      radius:30,
+      dissipating: true,
+      opacity:0.5
+    }}/>
+    )
+  }
   
   const renderMap = () => {
     
-    
-  
-
     return (
       <div style={{overflow:'hidden'}}>
       <Header msg={`Current (${lastCoords.lat.toFixed(4)} , ${lastCoords.lng.toFixed(4)} ) Markers:${pois.length}`}/>
@@ -111,11 +120,11 @@ export default (props) => {
     <GoogleMap
     mapContainerStyle={mapsStyle}
     center={lastCoords}
-    zoom={5}
+    zoom={12}
     onClick = { e => {setLastCoords({lat:e.latLng.lat(),lng:e.latLng.lng()}) } }
     
   >
-    
+    {renderHeatMap()}
     {pois.map((poi,i) =>{
         return (
         <Marker 
