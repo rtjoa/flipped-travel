@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
-import {Card, FormControl, Button} from 'react-bootstrap'
+import {Card, FormControl, Button, Form} from 'react-bootstrap'
 import { useForm } from "react-hook-form";
+import {motion} from 'framer-motion'
 
 const FormCard = styled.div`
 &{
@@ -12,6 +13,7 @@ const FormCard = styled.div`
   z-index:999;
   background-color:white;
   border-radius: 10px;
+  min-width:200px;
 }
 
 `
@@ -61,18 +63,24 @@ export default (props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
       <label>Location:</label>
       <FormControl type="text" placeholder="Title" name="title" ref={register} />
-      
-      <div className='d-flex flex-row justify-content-end align-items-center'>
-      <FormControl  name="type" type="radio" value="text" ref={register({ required: true })}/>
-      <label className='pt-1 pr-4'>Text</label>
-    
-      <FormControl name="type" type="radio" value="image" ref={register({ required: true })}/>
-      <label className='pt-1'>Image</label>
-      </div>
       <label>More information:</label>
       <FormControl as="textarea" type="text" placeholder="Submit a description/fun fact/picture URL!" name="data" ref={register} />
+      <div className='d-flex flex-row justify-content-end align-items-center'>
+      <Form.Check  name="type" type="radio" value="text" ref={register({ required: true })}/>
+      <label className='pt-1 pr-4'>Text</label>
+    
+      <Form.Check name="type" type="radio" value="image" ref={register({ required: true })}/>
+      <label className='pt-1'>Image</label>
+      </div>
+      
 
-      <Button type="submit" variant="warning" className='mt-3 ' >Submit</Button>
+
+     
+      <Button as={motion.button} type="submit" variant="warning" className='mt-3 '
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}>
+        Submit</Button>
+  
       </form>
        </Card.Body>
       

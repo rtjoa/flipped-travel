@@ -17,21 +17,7 @@ export default (props) => {
   
 
   const renderMap = () => {
-    let poiMarkers=<></>;
     
-    if(props.pois){
-      let heatMapData = props.pois.map(
-        poi => {
-          return new window.google.maps.LatLng(37.782, -122.447)
-          
-        }
-      )
-
-      console.log(heatMapData);
-      poiMarkers = props.pois.map(poi =>{
-       return <Marker position = {poi.lat,poi.lng}/>
-      })
-    }
     
   
     return (
@@ -40,7 +26,7 @@ export default (props) => {
       
     <GoogleMap
     mapContainerStyle={mapsStyle}
-    center={props.coords}
+    center={{lat:	47.6456,lng:-122.3344}}
     zoom={5}
     onClick = { e => {props.updateCoords(e.latLng.lat(),e.latLng.lng())} }
     mapTypeControl ='false'

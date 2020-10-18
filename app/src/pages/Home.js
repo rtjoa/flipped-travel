@@ -1,8 +1,8 @@
 import React from 'react'
 import {Button, Tooltip, OverlayTrigger} from 'react-bootstrap'
-import Paragraph from '../components/Paragraph.js'
-import Buttons from '../components/Buttons.js'
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faMapPin} from '@fortawesome/free-solid-svg-icons'
 export default () =>{
 
   const ExploreInfo = (props) => (
@@ -18,26 +18,19 @@ export default () =>{
 
   return (
     <>
-    <style type="text/css"> {`
-      body{
-        background: #203025;
-      }
-      .btn-space{
-        margin: 10vw;
-        font-size: 5vw;
-      }
-      `} </style>
+   <div>
+     <FontAwesomeIcon icon={faMapPin} className='mr-2' style={{fontSize:'1.3em'}}/>
+     Flipped Travel
+    </div>
 
-    <Paragraph>thingy
-    <Buttons>
     <OverlayTrigger placement="bottom" delay={{show: 250, hide: 400}} overlay={ExploreInfo}>
       <Button variant="outline-warning" href="/explore" size="space">
         Explore</Button></OverlayTrigger>
         <OverlayTrigger placement="bottom" delay={{show: 250, hide: 400}} overlay={SubmitInfo}>
       <Button variant="outline-secondary" href="/submit" size="space">
         Submit</Button></OverlayTrigger>
-    </Buttons>
-    </Paragraph>
+
+    
     </>
   )
 }

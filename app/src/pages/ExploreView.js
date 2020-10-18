@@ -7,10 +7,10 @@ import Header from '../components/Header.js'
 const POICard = styled(Card)`
 &{
   position:absolute;
-  font-size:1.2rem;
+  font-size:1.1rem;
   height:calc(100vh - 60px - 12em);
   width: 25vw;
-  overflow-y:hidden;
+  overflow-y:scroll;
   z-index:999;
   border-radius: 10px;
   margin:6em 0.69em;
@@ -49,7 +49,7 @@ export default (props) => {
       )
   }
 
-  const { isLoaded, loadError } = useJsApiLoader({
+  const { isLoaded, loadError } =  useJsApiLoader({
     googleMapsApiKey: "AIzaSyAFySSUITqXTjbzR4CaHBMnMeYaaFfYbEQ",
     libraries: ["visualization"]
   })
@@ -61,7 +61,7 @@ export default (props) => {
     if(lastPOI.type =="image"){
       POIImage= <Card.Img variant="top" src={lastPOI.data}/>
     }else if (lastPOI.type =="text"){
-      POIData=<p>{lastPOI.data}</p>
+      POIData=<div>{lastPOI.data}</div>
     }
 
     
@@ -119,9 +119,9 @@ export default (props) => {
       
     <GoogleMap
     mapContainerStyle={mapsStyle}
-    center={lastCoords}
+    center={{lat:	47.6456, lng:-122.3344}}
     zoom={12}
-    onClick = { e => {setLastCoords({lat:e.latLng.lat(),lng:e.latLng.lng()}) } }
+    
     
   >
     {renderHeatMap()}
