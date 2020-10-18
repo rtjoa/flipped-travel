@@ -18,7 +18,6 @@ const MainDiv = styled.div`
 
   background:linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ),url("https://www.free-largeimages.com/wp-content/uploads/2014/11/Google_world_map-9.png");
   color:black;
-  
   height:100vh;
   width:100vw;
   display:flex;
@@ -53,7 +52,7 @@ export default () =>{
 
   return (
     <>
-   <MainDiv className='pr-5'>
+   <MainDiv className='pr-5' style={{paddingLeft: "80px"}}>
      
      <Logo>
      <FontAwesomeIcon icon={faMapPin} className='mr-2' style={{fontSize:'1.3em'}}/>
