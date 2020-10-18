@@ -104,7 +104,7 @@ export default (props) => {
     options={{
       radius:30,
       dissipating: true,
-      opacity:0.5
+      opacity:0.6
     }}/>
     )
   }
@@ -121,13 +121,17 @@ export default (props) => {
     center={{lat:	47.6456, lng:-122.3344}}
     zoom={12}
     
-    
   >
     {renderHeatMap()}
     {pois.map((poi,i) =>{
         return (
         <Marker 
-        position = {{lat:poi.lat,lng:poi.lng}||{lat:0,lng:0}} 
+        position = {{lat:poi.lat - 0.005,lng:poi.lng}||{lat:0,lng:0}}
+        options = {{
+          opacity: 0,
+          icon: {
+            scale: 20
+        }}}
         onClick={e=>{
           setLastPOI(poi)
           setLastCoords({lat:e.latLng.lat(),lng:e.latLng.lng()})
